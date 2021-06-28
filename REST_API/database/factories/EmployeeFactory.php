@@ -22,7 +22,9 @@ class EmployeeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'team' => $this->faker->colorName,
+            'salary' => $this->faker->randomNumber,
         ];
     }
 }
