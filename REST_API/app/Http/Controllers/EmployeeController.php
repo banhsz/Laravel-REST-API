@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class EmployeeController extends Controller
 {
@@ -62,5 +63,14 @@ class EmployeeController extends Controller
     public function destroy(Employee $employee)
     {
         return Employee::destroy($employee->id);
+    }
+
+    public function loadIndexPage()
+    {
+        $data = Http::accept('application/json')->get('http://localhost:8000/api/employees');
+        return view('index', [
+            'employees' => json_decode($data,true)
+        ]);
+
     }
 }
