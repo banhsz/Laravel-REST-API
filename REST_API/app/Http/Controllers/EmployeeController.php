@@ -15,7 +15,11 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return Employee::all();
+        //return Employee::all();
+        //return Employee::where('name', 'like', '%Mr%')->get();
+        //return Employee::orderby('salary','desc')->get();
+        return Employee::where('team', 'like', '%blue%')->where('salary','>','100')->orderby('id','desc')->limit('2')->get();
+
     }
 
     /**
